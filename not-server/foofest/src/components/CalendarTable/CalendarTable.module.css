@@ -1,240 +1,277 @@
-
-.sauronSection{
-   width: 100%;
-   height: 100%;
+.sauronSection {
+  width: 100%;
 }
 
 /* NAV */
 
-.nav{
-   width: 90%;
-   height: 10vh;
-   display: flex;
-   align-items: center;
-   justify-content: flex-end;
-   font-family: "Josefin Sans", sans-serif;
+.sceneTitle {
+  /* transform: rotate(-90deg); */
+  font-size: 1.25rem;
+  font-family: swear-display, serif;
+  font-weight: 500;
+  font-style: normal;
+  color: white;
 }
 
-.ul{
-   width: 80%;
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   justify-content: space-around;
-   list-style-type: none;
+.nav {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
-.underlinedBeauty{
-   font-weight: 800;
-   text-decoration: underline 10px solid var(--shrek);
-   cursor: pointer;
-
+.ul {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  list-style-type: none;
+  font-family: swear-display, serif;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: uppercase;
+  font-size: 1rem;
 }
 
-.ul li:hover{
-   text-decoration: underline 10px solid var(--shrek);
-   cursor: pointer;
+.underlinedBeauty {
+  font-weight: 800;
+  text-decoration: underline 2px solid var(--shrek);
+  cursor: pointer;
 }
 
-
-
+.ul li:hover {
+  text-decoration: underline 10px solid var(--shrek);
+  cursor: pointer;
+}
 
 .tableSection {
-    width: 100vw; 
-    height: 40vh;
-    margin: 5rem auto 1rem auto;
-    background-color: var(--white);
-    border-radius: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-family: "Josefin Sans", sans-serif;
- }
-
- .stagesOutsideTable{
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: space-around;
-   height: 90%;
-   margin-top: 5rem;
- }
-
- .table{
-   width: 200vw; 
-    height: 100%;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-   font-family: "Josefin Sans", sans-serif;
-   border: 2px solid white;
-   border-radius: 5px;
-   margin-left: 1rem;
-   overflow: auto;
-   white-space: nowrap;
-
- }
-
-
- .timeFrames{
-   width: 200vw;
-   height: 20%;
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   justify-content: space-around;
-   font-size: 1rem;
-   overflow: auto;
-   white-space: nowrap;
+  flex: 0 0 10%;
+  width: 100vw;
+  height: 70vh;
+  margin: 0.5rem 0 0 0;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
 }
 
-.specificTimeFrameZero{
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   justify-content: space-between;
-   width: 10%;
-   opacity: 0.5;
+.stagesOutsideTable {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 100%;
+  padding-top: 60px;
+  font-size: 2rem;
+  background-color: rgba(255, 255, 255, 0.14);
+  padding-left: 0.5rem;
+  padding-right: 0.125rem;
 }
 
-.specificTimeFrame{
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   justify-content: center;
-   width: 7%;
-   opacity: 0.5;
-
+.table {
+  width: 200vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: auto;
+  white-space: nowrap;
 }
 
-.specificTimeFrameLast{
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   justify-content: flex-end;
-   width: 7%;
-   opacity: 0.5;
-
+.tableHeader {
+  flex: 0 0 6%;
+  width: 100%;
 }
 
-.tableBody{
-   width: 200vw;
-   height: 100%;
-   display: flex;
-   flex-direction: column;
-   align-items: flex-start;
-   justify-content: flex-start;
-   overflow: auto;
+.tableTime th {
+  width: 10rem;
 }
 
-/* MIDGARD */
-
-.midgardActRow{
-   width: 200vw;
-   border-top: 5px solid white;
-   color: white;
-   display: flex;
-   flex-direction: row;
-   align-items: flex-start;
-   justify-content: flex-start;
-   height: 33%;
-   overflow: auto;
+.tableTime {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  justify-items: end;
+  align-items: end;
+  text-align: left;
 }
 
-.midgardAct{
-   border: 5px solid white;
-   color: white;
-   height: 100%;
-   font-size: 1rem;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: space-around;
-   text-align: center;
-   width: 16.66vw;
-   line-break: strict;
-   transition: all 0.5s ease-in;
-   padding: 0.5rem;
+.specificTime {
+  font-size: 0.875rem;
+  font-weight: 300;
+  opacity: 0.5;
 }
 
-.midgardAct:hover{
-   color: black;
-   background-color: var(--shrek);
+.tableBody {
+  flex: 0 0 94%;
+  /* width: 200vw; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
-
-/* VANAHEIM */
-
-.vanaheimActRow{
-   width: 200vw;
-   border-top: 5px solid white;
-   color: white;
-   display: flex;
-   flex-direction: row;
-   align-items: flex-start;
-   justify-content: flex-start;
-   height: 33%;
-   overflow: auto;
+/* ACT ROWS */
+.midgardActRow,
+.vanaheimActRow,
+.jotunheimActRow {
+  flex: 1 0;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  overflow: auto;
 }
 
-.vanaheimAct{
-   border: 5px solid white;
-   color: white;
-   height: 100%;
-   font-size: 1rem;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: space-around;
-   text-align: center;
-   width: 16.66vw;
-   line-break: strict;
-   transition: all 0.5s ease-in;
-   padding: 0.5rem;
+.midgardAct,
+.vanaheimAct,
+.jotunheimAct {
+  border-right: 1px solid rgba(255, 255, 255, 0.6);
+  color: white;
+  height: 100%;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 10rem;
+  transition: all 0.5s ease-in;
 }
 
-.vanaheimAct:hover{
-   color: black;
-   background-color: var(--shrek);
+.actName {
+  white-space: pre-wrap;
 }
 
-
-/* JOTUNHEIM */
-
-.jotunheimActRow{
-   width: 200vw;
-   border-top: 5px solid white;
-   color: white;
-   display: flex;
-   flex-direction: row;
-   align-items: flex-start;
-   justify-content: flex-start;
-   height: 33%;
-   overflow: auto;
+.actTime {
+  opacity: 50%;
+  font-size: 0.75rem;
 }
 
-.jotunheimAct{
-   border: 5px solid white;
-   color: white;
-   height: 100%;
-   font-size: 1rem;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: space-around;
-   text-align: center;
-   width: 16.66vw;
-   line-break: strict;
-   transition: all 0.5s ease-in;
-   padding: 0.5rem;
+.midgardAct:hover,
+.vanaheimAct:hover,
+.jotunheimAct:hover {
+  color: black;
+  background-color: var(--shrek);
 }
 
-.jotunheimAct:hover{
-   color: black;
-   background-color: var(--shrek);
+@media (min-width: 421px) and (max-width: 768px) {
+  .ul {
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto 0.5rem;
+    font-size: 1.125rem;
+  }
+
+  .stagesOutsideTable {
+    padding-left: 1rem;
+    padding-right: 0.25rem;
+  }
 }
 
+@media (min-width: 768px) and (max-width: 991px) {
+  .ul {
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto 0.5rem;
+    font-size: 1.125rem;
+  }
 
+  .stagesOutsideTable {
+    padding-left: 2rem;
+    padding-right: 0.5rem;
+  }
 
+  .stagesOutsideTable h3 {
+    font-size: 1.5rem;
+  }
 
+  .midgardAct,
+  .vanaheimAct,
+  .jotunheimAct {
+    font-size: 1.125rem;
+    width: 12rem;
+  }
+
+  .tableTime th {
+    width: 12rem;
+  }
+
+  .actTime {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .ul {
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto 1rem;
+    font-size: 1.25rem;
+  }
+
+  .specificTime {
+    font-size: 1rem;
+  }
+
+  .stagesOutsideTable {
+    padding-left: 2.125rem;
+    padding-right: 0.5rem;
+  }
+
+  .stagesOutsideTable h3 {
+    font-size: 1.75rem;
+  }
+
+  .midgardAct,
+  .vanaheimAct,
+  .jotunheimAct {
+    font-size: 1.125rem;
+    width: 14rem;
+  }
+
+  .tableTime th {
+    width: 14rem;
+  }
+
+  .actTime {
+    font-size: 0.875rem;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .ul {
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto 1rem;
+    font-size: 1.25rem;
+  }
+
+  .specificTime {
+    font-size: 1.125rem;
+  }
+
+  .stagesOutsideTable {
+    padding-left: 2.25rem;
+    padding-right: 0.5rem;
+  }
+
+  .stagesOutsideTable h3 {
+    font-size: 1.875rem;
+  }
+
+  .midgardAct,
+  .vanaheimAct,
+  .jotunheimAct {
+    font-size: 1.3rem;
+    width: 16rem;
+  }
+
+  .tableTime th {
+    width: 16rem;
+  }
+
+  .actTime {
+    font-size: 0.875rem;
+  }
+}
