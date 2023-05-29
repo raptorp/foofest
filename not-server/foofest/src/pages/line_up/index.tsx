@@ -10,8 +10,8 @@ import LineupNav from "../../components/LineupNav/LineupNav";
 
 function Line_up() {
   return (
-    <>
-      <MainTitle mainTitle="LINE UP" />
+    <div className={styles.container}>
+      <MainTitle mainTitle="Schedule" />
 
       <section className={styles.stages}>
         <CalendarTable
@@ -20,7 +20,7 @@ function Line_up() {
         //   jotunheim={jotunheim}
         />
       </section>
-    </>
+    </div>
   );
 }
 

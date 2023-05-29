@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import organize from "./CalendarTable.module.css";
+import law from "./CalendarTable.module.css";
 import ThirdTitle from "../ThirdTitle/ThirdTitle";
 
 interface ScheduleData {
@@ -130,146 +130,116 @@ function CalendarTable() {
 
   return (
     <>
-      <section className={organize.sauronSection}>
-        <nav className={organize.nav}>
-          <ul className={organize.ul}>
+      <section className={law.sauronSection}>
+        <nav className={law.nav}>
+          <ul className={law.ul}>
             <li
-              className={activeIndex === 0 ? organize.underlinedBeauty : ""}
+              className={activeIndex === 0 ? law.underlinedBeauty : ""}
               onClick={() => changeDay("mon", 0)}
             >
-              MON
+              Mon
             </li>
             <li
-              className={activeIndex === 1 ? organize.underlinedBeauty : ""}
+              className={activeIndex === 1 ? law.underlinedBeauty : ""}
               onClick={() => changeDay("tue", 1)}
             >
-              TUE
+              Tue
             </li>
             <li
-              className={activeIndex === 2 ? organize.underlinedBeauty : ""}
+              className={activeIndex === 2 ? law.underlinedBeauty : ""}
               onClick={() => changeDay("wed", 2)}
             >
-              WED
+              Wed
             </li>
             <li
-              className={activeIndex === 3 ? organize.underlinedBeauty : ""}
+              className={activeIndex === 3 ? law.underlinedBeauty : ""}
               onClick={() => changeDay("thu", 3)}
             >
-              THU
+              Thu
             </li>
             <li
-              className={activeIndex === 4 ? organize.underlinedBeauty : ""}
+              className={activeIndex === 4 ? law.underlinedBeauty : ""}
               onClick={() => changeDay("fri", 4)}
             >
-              FRI
+              Fri
             </li>
             <li
-              className={activeIndex === 5 ? organize.underlinedBeauty : ""}
+              className={activeIndex === 5 ? law.underlinedBeauty : ""}
               onClick={() => changeDay("sat", 5)}
             >
-              SAT
+              Sat
             </li>
             <li
-              className={activeIndex === 6 ? organize.underlinedBeauty : ""}
+              className={activeIndex === 6 ? law.underlinedBeauty : ""}
               onClick={() => changeDay("sun", 6)}
             >
-              SUN
+              Sun
             </li>
           </ul>
         </nav>
 
-        <section className={organize.tableSection}>
-          <section className={organize.stagesOutsideTable}>
-            <ThirdTitle thirdTitle="MIDGARD" />
-            <ThirdTitle thirdTitle="VANAHEIM" />
-            <ThirdTitle thirdTitle="JOTUNHEIM" />
+        <section className={law.tableSection}>
+          <section className={law.stagesOutsideTable}>
+            <h3 className={law.sceneTitle}>Midgard</h3>
+            <h3 className={law.sceneTitle}>Vanaheim</h3>
+            <h3 className={law.sceneTitle}>Jotunheim</h3>
           </section>
 
-          <table className={organize.table}>
-            <thead className={organize.timeFrames}>
-              <tr className={organize.specificTimeFrameZero}>
-                <th>00:00</th>
-                <th>02:00</th>
-              </tr>
-
-              <tr className={organize.specificTimeFrame}>
-                <th>04:00</th>
-              </tr>
-
-              <tr className={organize.specificTimeFrame}>
-                <th>06:00</th>
-              </tr>
-
-              <tr className={organize.specificTimeFrame}>
-                <th>08:00</th>
-              </tr>
-
-              <tr className={organize.specificTimeFrame}>
-                <th>10:00</th>
-              </tr>
-
-              <tr className={organize.specificTimeFrame}>
-                <th>12:00</th>
-              </tr>
-
-              <tr className={organize.specificTimeFrame}>
-                <th>14:00</th>
-              </tr>
-
-              <tr className={organize.specificTimeFrame}>
-                <th>16:00</th>
-              </tr>
-
-              <tr className={organize.specificTimeFrame}>
-                <th>18:00</th>
-              </tr>
-
-              <tr className={organize.specificTimeFrame}>
-                <th>20:00</th>
-              </tr>
-
-              <tr className={organize.specificTimeFrame}>
-                <th>22:00</th>
-              </tr>
-
-              <tr className={organize.specificTimeFrameLast}>
-                <th>00:00</th>
+          <table className={law.table}>
+            <thead className={law.tableHeader}>
+              <tr className={law.tableTime}>
+                {/* <th className={law.specificTime}>00:00</th> */}
+                <th className={law.specificTime}>00:00</th>
+                <th className={law.specificTime}>02:00</th>
+                <th className={law.specificTime}>04:00</th>
+                <th className={law.specificTime}>06:00</th>
+                <th className={law.specificTime}>08:00</th>
+                <th className={law.specificTime}>10:00</th>
+                <th className={law.specificTime}>12:00</th>
+                <th className={law.specificTime}>14:00</th>
+                <th className={law.specificTime}>16:00</th>
+                <th className={law.specificTime}>18:00</th>
+                <th className={law.specificTime}>20:00</th>
+                <th className={law.specificTime}>22:00</th>
               </tr>
             </thead>
 
-            <tbody className={organize.tableBody}>
-              <tr className={organize.midgardActRow}>
+            <tbody className={law.tableBody}>
+              <tr className={law.midgardActRow}>
                 {midgard.map((el) => {
                   return (
-                    <div className={organize.midgardAct} key={el.id}>
-                      <th>{el.act}</th>
-                      <th>{el.start}</th>
-                      <th>{el.end}</th>
-                    </div>
+                    <td className={law.midgardAct} key={el.id}>
+                      <h4 className={law.actName}>{el.act}</h4>
+                      <p className={law.actTime}>
+                        {el.start} - {el.end}
+                      </p>
+                    </td>
                   );
                 })}
               </tr>
 
-              <tr className={organize.vanaheimActRow}>
+              <tr className={law.vanaheimActRow}>
                 {vanaheim.map((el) => {
                   return (
-                    <div className={organize.vanaheimAct} key={el.id}>
-                      <th>{el.act}</th>
-                      <th>{el.start}</th>
-                      <th>{el.end}</th>
-                    </div>
+                    <td className={law.vanaheimAct} key={el.id}>
+                      <h4 className={law.actName}>{el.act}</h4>
+                      <p className={law.actTime}>
+                        {el.start} - {el.end}
+                      </p>
+                    </td>
                   );
                 })}
               </tr>
 
-              <tr className={organize.jotunheimActRow}>
+              <tr className={law.jotunheimActRow}>
                 {jotunheim.map((el) => {
                   return (
-                    <div className={organize.jotunheimAct} key={el.id}>
-                      <th>{el.act}</th>
-                      <th>{el.start}</th>
-                      <th>{el.end}</th>
-                    </div>
+                    <td className={law.jotunheimAct} key={el.id}>
+                      <h4 className={law.actName}>{el.act}</h4>
+                      <p className={law.actTime}>
+                        {el.start} - {el.end}
+                      </p>
+                    </td>
                   );
                 })}
               </tr>
