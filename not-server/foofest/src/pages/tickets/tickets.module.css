@@ -1,23 +1,64 @@
-
-.main{
-    width: 100vw;
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    font-family: "Josefin Sans";
-    margin: 30vh auto 20vh auto;
+.pageContainer {
+  width: 100vw;
+  /* height: 80vh; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding-top: 7rem;
+  margin-bottom: 1rem;
 }
 
+.campGrid {
+  /* width: 80%; */
+  padding-top: 1rem;
 
-.campGrid{
-    width: 80%;
-    height: auto;
-    display: flex;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-around; */
+
+  gap: 1.5rem;
+}
+
+/* @media (min-width: 421px) and (max-width: 768px) {
+} */
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .pageContainer {
+    max-width: 680px;
+    margin: 0 auto 2rem;
+  }
+  .campGrid {
     flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 2rem;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .pageContainer {
+    max-width: 990px;
+    margin: 0 auto 4rem;
+  }
+  .campGrid {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .pageContainer {
+    max-width: 990px;
+    margin: 0 auto 6rem;
+  }
+  .campGrid {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
 }
