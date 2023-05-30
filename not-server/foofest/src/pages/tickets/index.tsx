@@ -2,42 +2,40 @@ import React from "react";
 import MainTitle from "../../components/MainTitle/MainTitle";
 import tickets from "./tickets.module.css";
 import { useState, useEffect } from "react";
-import Camp_card from "../../components/Camp_card/Camp_card";
+import CampCard from "../../components/CampCard/CampCard";
 
 function Tickets() {
   return (
-    <>
-      <main className={tickets.main}>
-        <MainTitle mainTitle="TICKETS" />
+    <div className={tickets.main}>
+      <MainTitle mainTitle="TICKETS" />
 
-        <section className={tickets.campGrid}>
-          <Camp_card
-            title="SVARTHEIM"
-            bio="Unveil the enchanting nights beneath a sky ablaze with stars."
-          />
+      <section className={tickets.campGrid}>
+        <CampCard
+          title="SVARTHEIM"
+          bio="Unveil the enchanting nights beneath a sky ablaze with stars."
+        />
 
-          <Camp_card
-            title="NILFHEIM"
-            bio="Enter Nilfheim, where serenity meets excitement."
-          />
+        <CampCard
+          title="NILFHEIM"
+          bio="Enter Nilfheim, where serenity meets excitement."
+        />
 
-          <Camp_card
-            title="HELHEIM"
-            bio="Immerse yourself in the vibrant spirit of Helheim."
-          />
+        <CampCard
+          title="HELHEIM"
+          bio="Immerse yourself in the vibrant spirit of Helheim."
+        />
 
-          <Camp_card
-            title="MUSPELHEIM"
-            bio="Welcome to Muspelheim, where the fire of the festival burns brightest."
-          />
+        <CampCard
+          title="MUSPELHEIM"
+          bio="Welcome to Muspelheim, where the fire of the festival burns brightest."
+        />
 
-          <Camp_card
-            title="ALFHEIM"
-            bio="Step into Alfheim, a magical enclave filled with whimsical charm."
-          />
-        </section>
-      </main>
-    </>
+        <CampCard
+          title="ALFHEIM"
+          bio="Step into Alfheim, a magical enclave filled with whimsical charm."
+        />
+      </section>
+    </div>
   );
 }
 
