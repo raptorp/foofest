@@ -4,7 +4,6 @@ import TicketsContext from "../../../context/ticketsContext";
 import law from "./campingAddOns.module.css";
 import ThirdTitle from "../../../components/ThirdTitle/ThirdTitle";
 import Link from "next/link";
-import Button from "../../../components/button/Button";
 import Image from "next/image";
 
 import svartheimImg from "../../../public/imgs/campImgs/svartheim.jpg";
@@ -16,17 +15,10 @@ import {
 } from "react-icons/rx";
 
 import {
-  Bs1CircleFill,
-  Bs1Circle,
-  Bs2CircleFill,
   Bs2Circle,
-  Bs3CircleFill,
   Bs3Circle,
-  Bs4CircleFill,
   Bs4Circle,
-  Bs5CircleFill,
   Bs5Circle,
-  BsCheckCircleFill,
   BsCheckCircle,
 } from "react-icons/bs";
 
