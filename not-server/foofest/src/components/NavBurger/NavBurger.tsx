@@ -3,12 +3,8 @@ import law from "./NavBurger.module.css";
 import { useState } from "react";
 import Link from "next/link";
 import { FaFacebookF, FaSpotify, FaTiktok } from "react-icons/fa";
-import { RiInstagramFill, RiMenuFill } from "react-icons/ri";
-
+import { RiInstagramFill } from "react-icons/ri";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import { FaBars } from "react-icons/fa";
-
-import { GrClose, GrMenu } from "react-icons/gr";
 
 const NavBurger = () => {
   const [navOpen, setNavOpen] = useState(false);
@@ -17,7 +13,11 @@ const NavBurger = () => {
       <div className={law.navContainer}>
         <div className={law.navbar}>
           <div className={law.logo}>
-            <Link className={law.logoTxt} href="/">
+            <Link
+              className={law.logoTxt}
+              href="/"
+              onClick={() => setNavOpen(!navOpen)}
+            >
               <h1>SwampFest</h1>
             </Link>
           </div>
