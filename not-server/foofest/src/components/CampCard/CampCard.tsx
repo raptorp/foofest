@@ -5,11 +5,14 @@ import React from "react";
 
 function CampCard({ title, bio }) {
   return (
-    <article className={styles.card}>
-      <span className={styles.swampfest}>SWAMPFEST 2023</span>
-      <h2 className={styles.title}>{title}</h2>
-      <p className={styles.bio}>{bio}</p>
-      <span className={styles.info}>More info</span>
+    <div className={styles.card}>
+      <div className={styles.campDetails}>
+        <span className={styles.swampfest}>SwampFest 2023</span>
+        <h2 className={styles.campName}>{title}</h2>
+        <p className={styles.bio}>{bio}</p>
+        <span className={styles.info}>More info</span>
+      </div>
+
       <div className={styles.moneyAndFee}>
         <span className={styles.money}>
           799 <span className={styles.kr}>KR.</span>
@@ -19,7 +22,7 @@ function CampCard({ title, bio }) {
       <Link className={styles.button} href={`camping/${title.toLowerCase()}`}>
         BUY NOW
       </Link>
-    </article>
+    </div>
   );
 }
 

@@ -6,7 +6,7 @@ import CampCard from "../../components/CampCard/CampCard";
 
 function Tickets() {
   return (
-    <div className={tickets.main}>
+    <div className={tickets.pageContainer}>
       <MainTitle mainTitle="TICKETS" />
 
       <section className={tickets.campGrid}>
