@@ -42,7 +42,8 @@ function index() {
       id: `${globalMoneyContext.globalReservationId}`,
     };
 
-    const url = "http://localhost:8080/fullfill-reservation";
+    const url =
+      "http://https://fierce-veiled-exception.glitch.me//fullfill-reservation";
 
     fetch(url, {
       method: "POST",

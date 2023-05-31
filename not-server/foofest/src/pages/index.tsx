@@ -20,7 +20,7 @@ export default function Home() {
   const [artists, setArtists] = useState([]);
 
   useEffect(() => {
-    const api = "http://localhost:8080/bands";
+    const api = "http://https://fierce-veiled-exception.glitch.me//bands";
 
     fetch(api)
       .then((res) => res.json())
