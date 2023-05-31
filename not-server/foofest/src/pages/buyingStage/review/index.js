@@ -166,6 +166,7 @@ function index() {
             <button
               className={law.nextButton}
               disabled={isCheckboxChecked ? false : true}
+              onClick={sendInformationToDatabase}
             >
               PLACE ORDER
             </button>
