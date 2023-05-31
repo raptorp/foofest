@@ -8,16 +8,17 @@ import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 const NavBurger = () => {
   const [navOpen, setNavOpen] = useState(false);
+
+  const handleLogoClick = () => {
+    setNavOpen(false); // Close the navigation
+  };
+
   return (
     <div className={law.nav}>
       <div className={law.navContainer}>
         <div className={law.navbar}>
           <div className={law.logo}>
-            <Link
-              className={law.logoTxt}
-              href="/"
-              onClick={() => setNavOpen(!navOpen)}
-            >
+            <Link className={law.logoTxt} href="/" onClick={handleLogoClick}>
               <h1>SwampFest</h1>
             </Link>
           </div>

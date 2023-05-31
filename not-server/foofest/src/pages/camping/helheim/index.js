@@ -62,7 +62,7 @@ function helheim() {
   const [availableSpots, setAvailableSpots] = useState([]);
 
   useEffect(() => {
-    const api = `http://https://fierce-veiled-exception.glitch.me//available-spots`;
+    const api = `https://fierce-veiled-exception.glitch.me/available-spots`;
 
     let fetchRes = fetch(api);
     fetchRes
@@ -151,8 +151,7 @@ function helheim() {
         amount: globalMoneyContext.howManyTickets,
       };
 
-      const url =
-        "http://https://fierce-veiled-exception.glitch.me//reserve-spot";
+      const url = "https://fierce-veiled-exception.glitch.me/reserve-spot";
 
       fetch(url, {
         method: "PUT",

@@ -2,7 +2,7 @@ import React from "react";
 import artist from "./Artist.module.css";
 import { useState } from "react";
 
-import { BsChevronDown, BsChevronUp } from "react-icons/Bs";
+import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 
 function Artist({ name, children }) {
   const [isCollapsed, setIsCollapsed] = useState(true);
