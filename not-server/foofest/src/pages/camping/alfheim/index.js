@@ -53,9 +53,7 @@ function alfheim() {
 
   // in the last approval of the purchase we send a POST request to the endpoint "/fullfill-reservation"
 
-  function modifyGlobalMoneyContext() {
-    globalMoneyContext.setCostOfTickets(totalCost);
-  }
+  
 
   // STORE AVAILABLE SPOTS
 
@@ -123,14 +121,15 @@ function alfheim() {
 
   useEffect(() => {
     setTicketCost(799 * regularTickets + 1299 * vipTickets);
-    setVat(Math.floor(totalCost / 25));
+    setVat(Math.floor(ticketCost / 4));
     setTotalCost(ticketCost + vat);
 
-    modifyGlobalMoneyContext();
+    globalMoneyContext.setCostOfTickets(ticketCost);
+
 
     globalMoneyContext.setHowManyTickets(regularTickets + vipTickets);
 
-    globalMoneyContext.setGlobalVat((oldVat) => oldVat + vat);
+    globalMoneyContext.setGlobalVat(vat);
   }, [regularTickets, vipTickets, totalCost, ticketCost, vat]);
 
   // CHECK IF AMOUNT OF TICKETS IS BIGGER THAN TICKETS AVAILABLE

@@ -44,7 +44,7 @@ function campingAddOns() {
 
   function addTentCostToTickets() {
     globalMoneyContext.setTicketsPlusTents(
-      (theTicketsCost) => theTicketsCost + camping + vat
+      (theTicketsCost) => theTicketsCost + camping
     );
   }
 
@@ -141,11 +141,11 @@ function campingAddOns() {
   const [campingAllInclusive, setCampingAllInclusive] = useState(0);
 
   useEffect(() => {
-    setCampingAllInclusive(camping + vat + theTicketsCost);
+    setCampingAllInclusive(camping + theTicketsCost);
     setCamping(
       swampLuxForThree * 399 + swampLuxForTwo * 299 + ecoSwampTents * 249
     );
-    setVat(Math.floor(camping / 25));
+    setVat(Math.floor(camping / 4));
     globalMoneyContext.setTicketsPlusTents(campingAllInclusive);
     globalMoneyContext.setTotalCampingCost(camping);
     globalMoneyContext.setGlobalVat((oldVat) => oldVat + vat);

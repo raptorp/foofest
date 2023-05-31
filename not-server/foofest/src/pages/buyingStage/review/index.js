@@ -76,6 +76,7 @@ function index() {
       email: globalMoneyContext.globalFormEmail,
       delivery: globalMoneyContext.deliveryObject,
       camp: globalMoneyContext.selectedCamp,
+      amount: globalMoneyContext.ticketsPlusTents + globalMoneyContext.globalVat + 99 + 24
     });
     if (error) throw error;
     //  router.push("/success");
@@ -110,12 +111,16 @@ function index() {
             </span>
           </div>
 
+          {/* 
+
           <div className={law.itemTotalContainer}>
             <span>Item(s)</span>
             <span className={law.ticketNum}>
               {globalMoneyContext.ticketsPlusTents} kr.
             </span>
           </div>
+
+          */}
 
           <div className={law.feeContainer}>
             <span>Booking fee</span>
@@ -137,23 +142,24 @@ function index() {
           <div className={law.totalContainer}>
             <span>Order total</span>
             <span className={law.totalNum}>
-              {globalMoneyContext.ticketsPlusTents + 99 + 24} kr.
+              {globalMoneyContext.ticketsPlusTents + globalMoneyContext.globalVat + 99 + 24} kr.
             </span>
           </div>
         </div>
 
-        <div className={law.termsContainer}>
+        <form className={law.termsContainer}>
           <input
             ref={agreeCheckbox}
-            checked={isCheckboxChecked}
+          //  checked={isCheckboxChecked}
             type="checkbox"
-            onClick={toggleCheckbox}
+          //  onClick={toggleCheckbox}
+            onChange={toggleCheckbox}
           />
 
           <label className={law.termsLabel}>
             I've read and accepted the terms of sales and delivery.
           </label>
-        </div>
+        </form>
       </div>
 
       <div className={law.flowNav}>
