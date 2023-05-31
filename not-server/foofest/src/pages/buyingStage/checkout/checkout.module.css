@@ -1,433 +1,365 @@
-.main{
-    width: 100vw;
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+.contentAndBasket {
+  display: flex;
+  flex-direction: column;
 }
 
-/* WHOLE GRID */
+.content {
+  display: flex;
+  flex-direction: column;
+}
 
-.details{
+/* CAMP INFO TEXT */
+
+.campInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 1rem 1.5rem;
+  width: 100%;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.5;
+  width: 100%;
+}
+
+/* ADD CONTAINER */
+
+.addContainer {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 1rem 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-size: 1.125rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.addTitle {
+  font-weight: 700;
+  padding-bottom: 0.375rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.form {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.inputContainer * {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.zipCityCountryContainer,
+.emailPhoneContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.fullNameLabel,
+.streetLabel,
+.zipLabel,
+.cityLabel,
+.countryLabel,
+.emailLabel,
+.phoneLabel {
+  margin-bottom: 0.125rem;
+  font-size: 1rem;
+}
+
+.fullName,
+.street,
+.zip,
+.city,
+.country,
+.email,
+.phone {
+  padding: 0.5rem 1rem;
+  width: 100%;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+}
+
+.paymentSubtitle {
+  font-weight: 500;
+  opacity: 70%;
+  font-style: italic;
+}
+/* BASKET */
+
+.basketContainer {
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding: 1rem 1rem 1.5rem;
+  margin: 1rem 0;
+
+  gap: 1rem;
+  font-size: 1.125rem;
+  border-radius: 10px;
+}
+
+.orderTitle {
+  font-weight: 700;
+}
+
+.ticketAmountContainer,
+.ticketsContainer,
+.campingContainer,
+.totalContainer,
+.vatContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.totalContainer {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  margin-top: 1rem;
+}
+
+.ticketNum,
+.vatNum {
+  font-weight: 600;
+}
+
+.totalNum {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+/* FLOW NAV */
+
+.flowNav {
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem 1rem;
+  gap: 1.75rem;
+}
+
+.selectIcons,
+.backNextButtons button {
+  cursor: pointer;
+}
+
+.backNextButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.backButton,
+.nextButton {
+  border-radius: 30px;
+  padding: 0.75rem 1.75rem;
+  transition: all 0.5s ease-in;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.backButton {
+  color: white;
+  background-color: black;
+  border: 2px solid white;
+  opacity: 80%;
+}
+
+.backButton:hover {
+  color: black;
+  background-color: white;
+  border: 2px solid white;
+}
+
+.nextButton {
+  color: black;
+  background-color: var(--shrek);
+  border: 2px solid var(--shrek);
+  opacity: 90%;
+}
+
+.nextButton:hover {
+  color: var(--shrek);
+  background-color: black;
+  border: 2px solid var(--shrek);
+}
+
+.nextButton:disabled {
+  opacity: 50%;
+  cursor: not-allowed;
+}
+
+.stepNum {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.currentStep {
+  color: var(--shrek);
+}
+
+.lowOpacity {
+  opacity: 50%;
+}
+
+/* MEDIA QUERIES */
+
+@media (min-width: 421px) and (max-width: 767px) {
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .contentAndBasket {
+    flex-direction: row;
+  }
+
+  .content {
+    flex: 1 1 60%;
+  }
+
+  .inputContainer {
+    width: 406px;
+    padding: 0 0.5rem;
+  }
+
+  .zipCityCountryContainer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: repeat(9, 1fr);
-    grid-template-areas: 
-    "txt txt order"
-    "select select order"
-    "select select order"
-    "select select order"
-    "select select order"
-    "select select nextStep"
-    "select select nextStep"
-    "select select nextStep"
-    "btn btn nextStep";
-    border-radius: 5px;
-    width: 60%;
-    height: 90%;
-    font-family: "Josefin Sans", sans-serif;
-    gap: 1rem;
-    
+  }
+
+  .emailPhoneContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .basketContainer {
+    width: 282px;
+    flex: 1 1 40%;
+    margin: 0 0 0 1rem;
+    height: fit-content;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .contentAndBasket {
+    flex-direction: row;
+  }
+
+  .content {
+    flex: 1 1 60%;
+  }
+
+  .inputContainer {
+    width: 457.167px;
+    padding: 0 0.5rem;
+  }
+
+  .zipCityCountryContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .emailPhoneContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .basketContainer {
+    width: 316.033px;
+    flex: 1 1 40%;
+    margin: 0 0 0 1rem;
+    height: fit-content;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .contentAndBasket {
+    flex-direction: row;
+  }
+
+  .content {
+    flex: 1 1 60%;
+  }
+
+  .inputContainer {
+    width: 457.167px;
+    padding: 0 0.5rem;
+  }
+
+  .zipCityCountryContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .emailPhoneContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .basketContainer {
+    width: 316.033px;
+    flex: 1 1 40%;
+    margin: 0 0 0 1rem;
+    height: fit-content;
+  }
 }
 
 /* COLLAPSIBLE */
 
-.collapseDiv{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-around;
-    gap: 1rem;
+/* .collapseDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  gap: 1rem;
 }
 
-.collapseDivBtn{
-    width: 95%;
-    height: auto;
-    font-family: "Josefin Sans", sans-serif;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 5px;
-    padding: 1rem;
-    transition: all 0.5s ease-in;
+.collapseDivBtn {
+  width: 95%;
+  height: auto;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 1rem;
+  transition: all 0.5s ease-in;
 }
 
-.collapseDivBtn:hover{
-    color: black;
-    background-color: white;
+.collapseDivBtn:hover {
+  color: black;
+  background-color: white;
+} */
+
+.payWithThis {
+  text-decoration: underline 5px solid yellow;
 }
 
-
-/* ORDER SUMMARY (RIGHT) */
-
-
-.orderSummary{
-    grid-area: order;
-    background-color: blanchedalmond;
-    color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-around;
-    border-radius: 5px;
-
+.notPayingWithThis {
+  cursor: pointer;
 }
-
-
-/* ORDER SUMMARY - TITLE */
-
-
-.orderTitle{
-    font-size: 1.5rem;
-    font-weight: 600;
-    padding-left: 3rem;
-}
-
-/* ORDER SUMMARY - TICKETS DIV */
-
-.orderTicketsDiv{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 80%;
-    margin: 0 auto;
-}
-
-/* ORDER SUMMARY - TOTAL DIV */
-
-.orderTotalDiv{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 80%;
-    margin: 0 auto;
-}
-
-/* ORDER SUMMARY - CAMPING DIV */
-
-.orderCampingDiv{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 80%;
-    margin: 0 auto;
-}
-
-/* ORDER SUMMARY - NUMBERS */
-
-.orderTicketCost{
-    font-weight: 800;
-}
-
-.orderCampingNum{
-    font-weight: 800;
-}
-
-.orderNumOfTickets{
-    font-weight: 800;
-}
-
-.orderTotalNum{
-    font-size: 1.5rem;
-}
-
-/* TITLE OF CAMP + DESCRIPTION */
-
-.allText{
-    grid-area: txt;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-around;
-    border-radius: 5px;
-
-}
-
-
-/* DESCRIPTION */
-
-.description{
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-top: 1rem;
-
-}
-
-/* SELECT YOUR TICKETS */
-
-.deliveryDiv{
-    grid-area: select;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    background-color: blanchedalmond;
-    color: black;
-    line-height: 1.5;
-    border-radius: 5px;
-    gap: 1rem;
-    overflow-y: auto;
-}
-
-.deliveryTitle{
-    font-size: 1.3rem;
-    width: 100%;
-    border-bottom: 1px solid black;
-}
-
-/* TYPE OF DELIVERY */
-
-.deliverySetType{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    gap: 1rem;
-    width: 100%;
-}
-
-/* DELIVERY DIV - TYPES OF DELIVERY */
-
-.sendTicketsToMyHome{
-    width: 100%;
-    height: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    gap: 1rem;
-    grid-template-areas:
-    "name name name"
-    "street street street"
-    "zip city country"
-    "emailNumber emailNumber emailNumber";
-}
-
-
-/* GRID AREAS */
-
-/* name */
-
-.sendTicketsToMyHomeFullName{
-    margin-top: 1rem;
-    grid-area: name;
-}
-
-.sendTicketsToMyHomeFullName > input{
-    width: 95%;
-    padding: 0.5rem;
-}
-
-/* street */
-
-.sendTicketsToMyHomeStreet{
-    grid-area: street;
-}
-
-.sendTicketsToMyHomeStreet > input{
-    width: 95%;
-    padding: 0.5rem;
-}
-
-/* zip code */
-
-.sendTicketsToMyHomeZipCode{
-    grid-area: zip;
-}
-
-.sendTicketsToMyHomeZipCode > input{
-    padding: 0.5rem;
-}
-
-/* city */
-
-.sendTicketsToMyHomeCity{
-    grid-area: city;
-}
-
-.sendTicketsToMyHomeCity > input{
-    padding: 0.5rem;
-}
-
-/* country */
-
-.sendTicketsToMyHomeCountry{
-    grid-area: country;
-}
-
-.sendTicketsToMyHomeCountry > input{
-    padding: 0.5rem;
-}
-
-/* email and number */ 
-
-.sendTicketsToMyHomeEmailAndNumber{
-    grid-area: emailNumber;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-}
-
-/* email */
-
-.sendTicketsToMyHomeEmail{
-    width: 50%;
-    
-}
-
-.sendTicketsToMyHomeEmail > input{
-    width: 90%;
-    padding: 0.5rem;
-}
-
-/* number */
-
-
-.sendTicketsToMyHomeNumber{
-    width: 50%;
-   
-
-}
-
-.sendTicketsToMyHomeNumber > input{
-    width: 90%;
-    padding: 0.5rem;
-}
-
-/* SEND TICKETS ONLINE */
-
-.sendTicketsOnline{
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.sendTicketsOnlineFullName{
-    margin-top: 1rem;
-    width: 95%;
-}
-
-.sendTicketsOnlineFullName > input{
-    padding: 0.5rem;
-    width: 95%;
-}
-
-.sendTicketsOnlineEmail{
-    margin-top: 1rem;
-    width: 95%;
-}
-
-.sendTicketsOnlineEmail > input{
-    padding: 0.5rem;
-    width: 95%;
-}
-
-
-/* payments div */
-
-.paymentsDiv{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 1rem;
-    width: 100%;
-    padding-top: 2rem;
-}
-
-.paymentTitle{
-    font-size: 1.3rem;
-    width: 100%;
-    border-bottom: 1px solid black;
-    text-decoration: none;
-}
-
-.selectPaymentMethodSpan{
-    font-weight: 100;
-}
-
-.paymentMethodDiv{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.payWithThis{
-    text-decoration: underline 5px solid yellow;
-}
-
-.notPayingWithThis{
-    cursor: pointer;
-}
-
-
-
-
-
-
-
-
-
-
-/* DARK BUTTONS (LEFT) */
-
-.darkBtns{
-    grid-area: btn;
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   justify-content: flex-start;
-}
-
-.backLink{
-    cursor: pointer;
-}
-
-/* DARK BUTTONS - INNER DIV */
-
-.innerDivBtns{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    width: 30%;
-}
-
-/* NEXT STEP BUTTON */
-
-
-.nextStep{
-    grid-area: nextStep;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.nextStepBtn {
-    color: black;
-    background-color: white;
-    border-radius: 30px;
-    padding: 0.5rem 1rem;
-    transition: all 0.5s ease-in;
-    cursor: pointer;
-  }
-  
-  .nextStepBtn:hover {
-    background-color: var(--shrek);
-    border: 2px solid white;
-  }
-  
-  .nextStepBtn:disabled {
-    background-color: gray;
-    border: 2px solid white;
-    cursor: none;
-  }
