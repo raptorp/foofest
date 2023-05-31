@@ -80,7 +80,7 @@ function CalendarTable() {
   const [jotunheim, setJotunheim] = useState<Act[]>([]);
 
   useEffect(() => {
-    const festivalData = `http://https://fierce-veiled-exception.glitch.me/schedule`;
+    const festivalData = `https://fierce-veiled-exception.glitch.me/schedule`;
 
     fetch(festivalData)
       .then((response) => response.json())
