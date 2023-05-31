@@ -1,52 +1,26 @@
-import React from 'react'
-import styles from "./success.module.css"
-import Link from 'next/link'
-import Button from "../../../components/button/Button"
-
-
-
+import React from "react";
+import law from "./success.module.css";
+import Link from "next/link";
+import ThirdTitle from "../../../components/ThirdTitle/ThirdTitle";
+import BuyFlowLayout from "../../../components/BuyFlowLayout/BuyFlowLayout";
 
 function index() {
   return (
-    <>
-    <main className={styles.main}>
-  
-  <section className={styles.details} >
+    <BuyFlowLayout>
+      <div className={law.content}>
+        <div className={law.campInfo}>
+          <ThirdTitle thirdTitle="Thank you for your purchase!" />
+          <p className={law.description}>
+            We've sent the tickets to the provided address/email.
+          </p>
+        </div>
 
-  
-
-    <div className={styles.deliveryDiv}>
-
-      <span className={styles.deliveryTitle}><strong>Thank you for your purchase!</strong></span>
-
-      <div className={styles.individualCostsDiv}>
-
-        <span>We've sent the tickets to the provided address/email.</span>
-
+        <Link href="/">
+          <button className={law.nextButton}>HOME</button>
+        </Link>
       </div>
-
-      
-
-    </div>  
-
-   
-
-    <div className={styles.nextStep}>
-
-      <Link href="/"
-      >
-      <Button 
-      title="HOME"
-      />
-      </Link>
-    </div>
-   
-   
-
-  </section>
-</main>
-</>
-  )
+    </BuyFlowLayout>
+  );
 }
 
-export default index
+export default index;

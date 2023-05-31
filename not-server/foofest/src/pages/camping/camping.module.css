@@ -1,5 +1,4 @@
 .contentAndBasket {
-  width: 100vw;
   display: flex;
   flex-direction: column;
 }
@@ -7,6 +6,19 @@
 .content {
   display: flex;
   flex-direction: column;
+}
+/* IMAGE */
+
+.imageContainer {
+  width: 100%;
+}
+
+.imgStyle {
+  object-fit: cover;
+  width: 100% !important;
+  display: block;
+  aspect-ratio: auto;
+  max-height: 20vh;
 }
 
 /* CAMP INFO TEXT */
@@ -21,6 +33,56 @@
 .description {
   font-size: 1rem;
   line-height: 1.5;
+}
+
+/* ADD CONTAINER */
+
+.addContainer {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 1rem 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1.125rem;
+  border-radius: 10px;
+  margin: 0 1rem;
+}
+
+.addTitle {
+  font-weight: 700;
+}
+
+.typeAndButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.typeText {
+  display: flex;
+  flex-direction: column;
+}
+
+.typeText span {
+  opacity: 60%;
+}
+
+.typeButtons {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.overallSpots {
+  font-size: 0.875rem;
+  opacity: 60%;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 /* BASKET */
@@ -45,10 +107,6 @@
 }
 
 .ticketsContainer,
-.campingContainer,
-.itemTotalContainer,
-.feeContainer,
-.deliveryContainer,
 .totalContainer,
 .vatContainer {
   display: flex;
@@ -71,15 +129,6 @@
 .totalNum {
   font-size: 2.5rem;
   font-weight: 600;
-}
-
-.termsContainer {
-  padding: 0 1rem;
-}
-
-.termsLabel {
-  padding-left: 0.25rem;
-  font-style: italic;
 }
 
 /* FLOW NAV */
@@ -161,26 +210,70 @@
 /* MEDIA QUERIES */
 
 @media (min-width: 421px) and (max-width: 767px) {
-  .contentAndBasket {
-    max-width: 500px;
-    margin: 0 auto;
+  .imgStyle {
+    max-height: 20vh;
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
+  .imgStyle {
+    border-radius: 10px;
+  }
+
   .contentAndBasket {
-    max-width: 624px;
+    flex-direction: row;
+  }
+
+  .content {
+    flex: 1 1 60%;
+  }
+
+  .basketContainer {
+    flex: 1 1 40%;
+    margin-right: 0;
+    margin-top: 0;
+    height: fit-content;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
+  .imgStyle {
+    border-radius: 10px;
+  }
+
   .contentAndBasket {
-    max-width: 800px;
+    flex-direction: row;
+  }
+
+  .content {
+    flex: 1 1 60%;
+  }
+
+  .basketContainer {
+    flex: 1 1 40%;
+    margin-right: 0;
+    margin-top: 0;
+    height: fit-content;
   }
 }
 
 @media only screen and (min-width: 1200px) {
+  .imgStyle {
+    border-radius: 10px;
+  }
+
   .contentAndBasket {
-    max-width: 900px;
+    flex-direction: row;
+  }
+
+  .content {
+    flex: 1 1 60%;
+  }
+
+  .basketContainer {
+    flex: 1 1 40%;
+    margin-right: 0;
+    margin-top: 0;
+    height: fit-content;
   }
 }

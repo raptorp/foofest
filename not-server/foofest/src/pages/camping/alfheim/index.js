@@ -1,24 +1,48 @@
-import React from 'react'
-import { useEffect, useState, useContext } from 'react';
-import styles from "./alfheim.module.css"
-import ThirdTitle from "../../../components/ThirdTitle/ThirdTitle"
-import Button from "../../../components/button/Button"
-import Link from 'next/link';
-import TicketsContext from "../../../context/ticketsContext"
+import React from "react";
+import { useEffect, useState, useContext } from "react";
 
+import law from "../camping.module.css";
 
+import ThirdTitle from "../../../components/ThirdTitle/ThirdTitle";
 
+import Link from "next/link";
+import TicketsContext from "../../../context/ticketsContext";
+import Image from "next/image";
+
+import alfheimImg from "../../../public/imgs/campImgs/alfheim.jpg";
+
+import {
+  RxPlusCircled,
+  RxMinusCircled,
+  RxQuestionMarkCircled,
+} from "react-icons/rx";
+
+import {
+  Bs1CircleFill,
+  Bs1Circle,
+  Bs2CircleFill,
+  Bs2Circle,
+  Bs3CircleFill,
+  Bs3Circle,
+  Bs4CircleFill,
+  Bs4Circle,
+  Bs5CircleFill,
+  Bs5Circle,
+  BsCheckCircleFill,
+  BsCheckCircle,
+} from "react-icons/bs";
+
+import BuyFlowLayout from "../../../components/BuyFlowLayout/BuyFlowLayout";
 
 function alfheim() {
-
   // bring context to this page
 
   const globalMoneyContext = useContext(TicketsContext);
 
-// THIS IS TO GET THE ID FROM THE ENDPOINT, BRING LOWER LATER
+  // THIS IS TO GET THE ID FROM THE ENDPOINT, BRING LOWER LATER
 
   // when the user clicks on one of the cards, we have to send a get request
-  // and fetch an ID that we'll store in our database at the end of the 
+  // and fetch an ID that we'll store in our database at the end of the
   // buying process
 
   // onClick event triggers a get request to "/reserve-spot" (this is inside of the checkavailability function)
@@ -29,76 +53,64 @@ function alfheim() {
 
   // in the last approval of the purchase we send a POST request to the endpoint "/fullfill-reservation"
 
-
-
-
-
-
-
-  function modifyGlobalMoneyContext(){
+  function modifyGlobalMoneyContext() {
     globalMoneyContext.setCostOfTickets(totalCost);
   }
 
+  // STORE AVAILABLE SPOTS
 
+  const [availableSpots, setAvailableSpots] = useState([]);
 
- // STORE AVAILABLE SPOTS
+  useEffect(() => {
+    const api = `http://localhost:8080/available-spots`;
 
- const [availableSpots, setAvailableSpots] = useState([]);
+    let fetchRes = fetch(api);
+    fetchRes
+      .then((res) => res.json())
+      .then((spots) => {
+        setAvailableSpots(spots[4]);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
- useEffect(() => {
-   const api = `http://localhost:8080/available-spots`;
+  //
 
+  // store num of tickets as state
 
- let fetchRes = fetch(api);
- fetchRes
-   .then((res) => res.json())
-   .then((spots) => {
-    setAvailableSpots(spots[4]);
-    
-   })
-   .catch((err) => {
-     console.error(err);
-   });
- }, [])
-
-
- //
-
-  // store num of tickets as state 
-
- const [regularTickets, setRegularTickets] = useState(0);
+  const [regularTickets, setRegularTickets] = useState(0);
 
   // onClick functions for increasing and reducing the num of tickets, max 4
 
-  function addRegTicket(){
-    if(regularTickets < 4){
-    setRegularTickets(old => old+1);
-  }
-  }
-
-  function subtractRegTicket(){
-    if(regularTickets > 0){
-    setRegularTickets(old => old-1);
-  }
+  function addRegTicket() {
+    if (regularTickets < 4) {
+      setRegularTickets((old) => old + 1);
+    }
   }
 
-    // store num of VIP tickets as state 
+  function subtractRegTicket() {
+    if (regularTickets > 0) {
+      setRegularTickets((old) => old - 1);
+    }
+  }
 
+  // store num of VIP tickets as state
 
- const [vipTickets, setVipTickets] = useState(0);
+  const [vipTickets, setVipTickets] = useState(0);
 
   // onClick functions for increasing and reducing the num of VIP tickets, max 4
 
-  function addVipTicket(){
-    if(vipTickets < 4){
-    setVipTickets(old => old+1);
-  }
+  function addVipTicket() {
+    if (vipTickets < 4) {
+      setVipTickets((old) => old + 1);
+    }
   }
 
-  function subtractVipTicket(){
-    if(vipTickets > 0){
-    setVipTickets(old => old-1);
-  }
+  function subtractVipTicket() {
+    if (vipTickets > 0) {
+      setVipTickets((old) => old - 1);
+    }
   }
 
   // store cost of ticket total
@@ -110,8 +122,7 @@ function alfheim() {
   const [totalCost, setTotalCost] = useState(0);
 
   useEffect(() => {
-
-    setTicketCost((799 * regularTickets) + (1299 * vipTickets));
+    setTicketCost(799 * regularTickets + 1299 * vipTickets);
     setVat(Math.floor(totalCost / 25));
     setTotalCost(ticketCost + vat);
 
@@ -119,184 +130,179 @@ function alfheim() {
 
     globalMoneyContext.setHowManyTickets(regularTickets + vipTickets);
 
-    globalMoneyContext.setGlobalVat(oldVat => oldVat + vat);
+    globalMoneyContext.setGlobalVat((oldVat) => oldVat + vat);
+  }, [regularTickets, vipTickets, totalCost, ticketCost, vat]);
 
-  }, [regularTickets, vipTickets, totalCost, ticketCost, vat])
+  // CHECK IF AMOUNT OF TICKETS IS BIGGER THAN TICKETS AVAILABLE
 
+  function checkAvailability(event) {
+    globalMoneyContext.setSelectedCamp("alfheim");
 
- 
-// CHECK IF AMOUNT OF TICKETS IS BIGGER THAN TICKETS AVAILABLE
+    if (regularTickets + vipTickets > availableSpots.available) {
+      alert(
+        `There are not enough tickets available. Available tickets: ${availableSpots.available} `
+      );
+      event.preventDefault();
+    } else {
+      // GET RESERVATION ID FROM ENDPOINT "/reserve-spot" WITH A PUT REQUEST
 
-function checkAvailability(event){
-  globalMoneyContext.setSelectedCamp("alfheim")
+      const payload = {
+        area: "Alfheim",
+        amount: globalMoneyContext.howManyTickets,
+      };
 
-  if (regularTickets + vipTickets > availableSpots.available){
-    alert(`There are not enough tickets available. Available tickets: ${availableSpots.available} `)
-    event.preventDefault();
-  } else {
+      const url = "http://localhost:8080/reserve-spot";
 
-
-    // GET RESERVATION ID FROM ENDPOINT "/reserve-spot" WITH A PUT REQUEST
-
-    const payload = {
-      "area": "Alfheim",
-      "amount": globalMoneyContext.howManyTickets
-    };
-  
-    const url = "http://localhost:8080/reserve-spot"
-
-
-    fetch(url, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "text/plain"
-      },
-      body: JSON.stringify(payload)
-    })
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Error: " + response.status);
-        }
+      fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "text/plain",
+        },
+        body: JSON.stringify(payload),
       })
-      .then(response => {
-        console.log(response, globalMoneyContext.howManyTickets, storeReservationId, response.id);
-        globalMoneyContext.setGlobalReservationId(response.id);
-      })
-      .catch(error => {
-        console.error("Error:", error);
-      });
-
-      
-  
-    }   
-}
-
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error("Error: " + response.status);
+          }
+        })
+        .then((response) => {
+          console.log(
+            response,
+            globalMoneyContext.howManyTickets,
+            storeReservationId,
+            response.id
+          );
+          globalMoneyContext.setGlobalReservationId(response.id);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
+  }
 
   return (
-    <>
-    <main className={styles.main}>
-
-      <section className={styles.details} >
-
-        <div className={styles.nordicLights}>
-
-        </div>
-        
-        
-        <article className={styles.orderSummary}>
-          <span className={styles.orderTitle}>Order Summary</span>
-          <div className={styles.orderTotalDiv}>
-            <span>Ticket cost</span>
-            <span className={styles.orderTicketCost}>{ticketCost} kr.</span>
-          </div>
-
-          <div className={styles.orderTaxesDiv}>
-            <span>VAT</span>
-            <span className={styles.orderTaxesNum}>{vat} kr.</span>
-          </div>
-
-          <div className={styles.orderTotalDiv}>
-            <span>Total</span>
-            <span className={styles.orderTotalNum}>{totalCost} kr.</span>
-          </div>
-        </article>
-        
-        <div className={styles.allText}>
-            <ThirdTitle
-            
-              thirdTitle="ALFHEIM"
+    <BuyFlowLayout>
+      <div className={law.contentAndBasket}>
+        <div className={law.content}>
+          <div className={law.imageContainer}>
+            <Image
+              className={law.imgStyle}
+              src={alfheimImg}
+              sizes="(max-width: 1920px) 100vw, 750px"
+              alt="/"
             />
-
-            <p className={styles.description}>Step into Alfheim, a magical enclave filled with whimsical charm. 
-            This enchanting campsite is adorned with twinkling fairy lights, creating a captivating ambiance like no other.  </p>
-
-        </div>
-
-        <div className={styles.selectTickets}>
-
-          <span className={styles.selectTitle}><strong>Select your tickets</strong></span>
-
-          <div className={styles.selectRegular}>
-                
-                <div className={styles.selectRegularDiv}>
-                  <span><strong>Regular</strong></span>
-                  <span className={styles.ticketSpecs}>799 kr. pr ticket</span>
-                </div>
-
-                <div className={styles.selectRegularAmount}>
-                  <span onClick={subtractRegTicket} className={styles.selectIcons}>-</span>
-                  <span className={styles.numOfTickets}>{regularTickets}</span>
-                  <span onClick={addRegTicket} className={styles.selectIcons}>+</span>
-                </div>
-
           </div>
 
-          <div className={styles.selectVip}>
-                
-                <div className={styles.selectVipDiv}>
-                  <span><strong>VIP</strong></span>
-                  <span className={styles.ticketSpecs}>1299.00 kr. pr ticket</span>
-                </div>
+          <div className={law.campInfo}>
+            <ThirdTitle thirdTitle="ALFHEIM" />
 
-                <div className={styles.selectVipAmount}>
-                  <span onClick={subtractVipTicket} className={styles.selectIcons}>-</span>
-                  <span className={styles.numOfTickets}>{vipTickets}</span>
-                  <span onClick={addVipTicket} className={styles.selectIcons}>+</span>
-                </div>
-
+            <p className={law.description}>
+              Step into Alfheim, a magical enclave filled with whimsical charm.
+              This enchanting campsite is adorned with twinkling fairy lights,
+              creating a captivating ambiance like no other.{" "}
+            </p>
           </div>
+          <div className={law.addContainer}>
+            <h3 className={law.addTitle}>Select your tickets</h3>
 
-        
+            <div className={law.typeAndButtons}>
+              <div className={law.typeText}>
+                <p>
+                  Regular <RxQuestionMarkCircled size={16} />
+                </p>
+                <span>799.00 kr. pr. ticket</span>
+              </div>
+              <div className={law.typeButtons}>
+                <RxMinusCircled
+                  size={32}
+                  onClick={subtractRegTicket}
+                  className={law.selectIcons}
+                />
+                <span>{regularTickets}</span>
+                <RxPlusCircled
+                  size={32}
+                  onClick={addRegTicket}
+                  className={law.selectIcons}
+                />
+              </div>
+            </div>
+
+            <div className={law.typeAndButtons}>
+              <div className={law.typeText}>
+                <p>
+                  VIP <RxQuestionMarkCircled size={16} />
+                </p>
+                <span>1299.00 kr. pr. ticket</span>
+              </div>
+              <div className={law.typeButtons}>
+                <RxMinusCircled
+                  size={32}
+                  onClick={subtractVipTicket}
+                  className={law.selectIcons}
+                />
+                <span>{vipTickets}</span>
+                <RxPlusCircled
+                  size={32}
+                  onClick={addVipTicket}
+                  className={law.selectIcons}
+                />
+              </div>
+            </div>
+            <div className={law.overallSpots}>
+              <span className={law.availableSpots}>
+                Tickets left in this area: {availableSpots.available}
+              </span>
+            </div>
+          </div>
         </div>
 
-        <div className={styles.darkBtns}>
-          <div className={styles.innerDivBtns}>
+        <div className={law.basketContainer}>
+          <h3 className={law.orderTitle}>Order Summary</h3>
+          <div className={law.ticketsContainer}>
+            <span>Ticket(s)</span>
+            <span className={law.ticketNum}>{ticketCost} kr.</span>
+          </div>
 
-          <Link
-          className={styles.backLink} 
-          href="/tickets">
+          <div className={law.vatContainer}>
+            <span>VAT</span>
+            <span className={law.vatNum}>{vat} kr.</span>
+          </div>
 
-          <Button title="BACK" 
-          />
-          
+          <div className={law.totalContainer}>
+            <span>Total</span>
+            <span className={law.totalNum}>{totalCost} kr.</span>
+          </div>
+        </div>
+      </div>
+
+      <div className={law.flowNav}>
+        <div className={law.backNextButtons}>
+          <Link href="/tickets">
+            <button className={law.backButton}>GO BACK</button>
           </Link>
 
-          <Button title="RESET STEP"
-          />
-
-          </div>
-         
-
-        </div>
-
-        <div className={styles.nextStep}>
-
-          <Link href="/buyingStage/campingAddOns"
-          onClick={checkAvailability}
-          >
-            <button className={styles.nextStepBtn}
-          disabled={globalMoneyContext.howManyTickets == 0 ? true : false}
-          >
-            NEXT STEP
-          </button>
+          <Link href="/buyingStage/campingAddOns" onClick={checkAvailability}>
+            <button
+              className={law.nextButton}
+              disabled={globalMoneyContext.howManyTickets == 0 ? true : false}
+            >
+              NEXT STEP
+            </button>
           </Link>
-
-          <div className={styles.overallSpots}>
-              <span className={styles.spots}>Number of spots: {availableSpots.spots}</span>
-              <span className={styles.availableSpots}>Available spots: {availableSpots.available}</span>
-          </div>
-
         </div>
-       
-       
-
-      </section>
-    </main>
-    </>
-  )
+        <div className={law.stepNum}>
+          <Bs1Circle className={law.currentStep} size={24} />
+          <Bs2Circle className={law.lowOpacity} size={24} />
+          <Bs3Circle className={law.lowOpacity} size={24} />
+          <Bs4Circle className={law.lowOpacity} size={24} />
+          <Bs5Circle className={law.lowOpacity} size={24} />
+        </div>
+      </div>
+    </BuyFlowLayout>
+  );
 }
 
-export default alfheim
+export default alfheim;
