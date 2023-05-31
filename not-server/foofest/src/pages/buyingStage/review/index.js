@@ -43,7 +43,7 @@ function index() {
     };
 
     const url =
-      "http://https://fierce-veiled-exception.glitch.me//fullfill-reservation";
+      "http://https://fierce-veiled-exception.glitch.me/fullfill-reservation";
 
     fetch(url, {
       method: "POST",

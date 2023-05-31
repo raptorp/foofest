@@ -11,7 +11,7 @@ function Bands() {
   const [artists, setArtists] = useState([]);
 
   useEffect(() => {
-    const api = `http://https://fierce-veiled-exception.glitch.me//bands`;
+    const api = `http://https://fierce-veiled-exception.glitch.me/bands/`;
 
     let fetchRes = fetch(api);
     fetchRes

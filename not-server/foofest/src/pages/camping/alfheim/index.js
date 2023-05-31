@@ -62,7 +62,7 @@ function alfheim() {
   const [availableSpots, setAvailableSpots] = useState([]);
 
   useEffect(() => {
-    const api = `http://https://fierce-veiled-exception.glitch.me//available-spots`;
+    const api = `http://https://fierce-veiled-exception.glitch.me/available-spots`;
 
     let fetchRes = fetch(api);
     fetchRes
@@ -152,7 +152,7 @@ function alfheim() {
       };
 
       const url =
-        "http://https://fierce-veiled-exception.glitch.me//reserve-spot";
+        "http://https://fierce-veiled-exception.glitch.me/reserve-spot";
 
       fetch(url, {
         method: "PUT",
