@@ -11,6 +11,7 @@ import Link from "next/link";
 import TicketsContext from "../../../context/ticketsContext";
 import Image from "next/image";
 
+
 import svartheimImg from "../../../public/imgs/campImgs/svartheim.jpg";
 
 import {
@@ -37,6 +38,19 @@ import {
 import BuyFlowLayout from "../../../components/BuyFlowLayout/BuyFlowLayout";
 
 function svartheim() {
+
+
+
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+
   // bring context to this page
 
   const globalMoneyContext = useContext(TicketsContext);
@@ -134,12 +148,14 @@ function svartheim() {
 
   // CHECK IF AMOUNT OF TICKETS IS BIGGER THAN TICKETS AVAILABLE
 
-  function checkAvailability() {
+  function checkAvailability(event) {
     globalMoneyContext.setSelectedCamp("svartheim");
     if (regularTickets + vipTickets > availableSpots.available) {
-      console.log(
+      
+      alert(
         `There are not enough tickets available. Available tickets: ${availableSpots.available} `
       );
+      event.preventDefault();
     } else {
       // GET RESERVATION ID FROM ENDPOINT "/reserve-spot" WITH A PUT REQUEST
 

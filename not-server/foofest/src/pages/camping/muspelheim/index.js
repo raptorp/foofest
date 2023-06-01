@@ -5,6 +5,8 @@ import law from "../camping.module.css";
 
 import ThirdTitle from "../../../components/ThirdTitle/ThirdTitle";
 
+
+
 import Link from "next/link";
 import TicketsContext from "../../../context/ticketsContext";
 import Image from "next/image";
@@ -35,6 +37,8 @@ import {
 import BuyFlowLayout from "../../../components/BuyFlowLayout/BuyFlowLayout";
 
 function muspelheim() {
+
+
   // bring context to this page
 
   const globalMoneyContext = useContext(TicketsContext);
