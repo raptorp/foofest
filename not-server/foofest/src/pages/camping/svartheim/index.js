@@ -3,6 +3,8 @@ import { useEffect, useState, useContext } from "react";
 
 import law from "../camping.module.css";
 
+import Timer from "../../../components/Timer/Timer"
+
 import ThirdTitle from "../../../components/ThirdTitle/ThirdTitle";
 
 import Link from "next/link";
@@ -255,7 +257,7 @@ function svartheim() {
         </div>
 
         <div className={law.basketContainer}>
-          <h3 className={law.orderTitle}>Order Summary</h3>
+          <h3 className={law.orderTitle}>Order Summary | {globalMoneyContext.howManyTickets === 0 ? "" : <Timer />}</h3>
           <div className={law.ticketsContainer}>
             <span>Ticket(s)</span>
             <span className={law.ticketNum}>{ticketCost} kr.</span>

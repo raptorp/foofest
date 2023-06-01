@@ -2,7 +2,6 @@ import Head from "next/head";
 
 import React, { useContext } from "react";
 import TicketsContext from "../../context/ticketsContext";
-import Timer from "../Timer/Timer";
 
 import law from "./Layout.module.css";
 
@@ -26,11 +25,13 @@ const Layout = ({ children }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+       
       <header className={law.headerBox}>
+        
+
         <NavBurger />
 
-        {/* THE TIMER ONLY SHOWS UP AFTER YOU HAVE PICKED AT LEAST 1 TICKET */}
-        {globalValues.howManyTickets === 0 ? "" : <Timer />}
+       
       </header>
       <main>{children}</main>
       <footer>
