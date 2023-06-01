@@ -363,3 +363,10 @@
 .notPayingWithThis {
   cursor: pointer;
 }
+
+
+.requiredSpan{
+  font-size: 0.8rem;
+  padding-left: 0.5rem;
+  opacity: 0.5;
+}

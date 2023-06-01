@@ -141,13 +141,22 @@ function campingAddOns() {
   const [campingAllInclusive, setCampingAllInclusive] = useState(0);
 
   useEffect(() => {
+    // camping cost + ticket cost
     setCampingAllInclusive(camping + theTicketsCost);
-    setCamping(
-      swampLuxForThree * 399 + swampLuxForTwo * 299 + ecoSwampTents * 249
-    );
+
+    // camping cost
+    setCamping(swampLuxForThree * 399 + swampLuxForTwo * 299 + ecoSwampTents * 249);
+
+    // VAT
     setVat(Math.floor(camping / 4));
+
+    // camping cost + ticket cost GLOBAL
     globalMoneyContext.setTicketsPlusTents(campingAllInclusive);
+
+    // camping cost GLOBAL
     globalMoneyContext.setTotalCampingCost(camping);
+
+    // global VAT
     globalMoneyContext.setGlobalVat((oldVat) => oldVat + vat);
   }, [vat, camping, swampLuxForThree, swampLuxForTwo, ecoSwampTents]);
 

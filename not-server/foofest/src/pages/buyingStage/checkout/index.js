@@ -4,6 +4,7 @@ import TicketsContext from "../../../context/ticketsContext";
 import law from "./checkout.module.css";
 import ThirdTitle from "../../../components/ThirdTitle/ThirdTitle";
 import Link from "next/link";
+import {useRouter} from "next/router"
 
 import { SiPaypal, SiKlarna, SiStartrek } from "react-icons/si";
 
@@ -17,6 +18,10 @@ import {
 import BuyFlowLayout from "../../../components/BuyFlowLayout/BuyFlowLayout";
 
 function checkout() {
+
+  // use router in case email and phone validation are correct
+  const router = useRouter();
+
   // bring context to this page
 
   const globalMoneyContext = useContext(TicketsContext);
@@ -46,26 +51,6 @@ function checkout() {
     globalMoneyContext.setDeliveryObject(user);
   }, [user]);
 
-  // CREATE COLLAPSIBLE
-
-  //  const Collapsible = ({ title, children }) => {
-  //    const [isCollapsed, setIsCollapsed] = useState(true);
-
-  //    const toggleCollapse = () => {
-  //      // toggle collapse
-  //     setIsCollapsed(!isCollapsed);
-
-  //    };
-
-  //    return (
-  //      <div className={law.collapseDiv}>
-  //        <button className={law.collapseDivBtn} onClick={toggleCollapse}>
-  //          {isCollapsed ? title + " +" : title + " -"}
-  //        </button>
-  //        {!isCollapsed && !fillingForm && <div>{children}</div>}
-  //      </div>
-  //    );
-  //  };
 
   // check which payment method has been chosen
 
@@ -74,6 +59,57 @@ function checkout() {
   function checkMe(id) {
     setIsChecked(id);
   }
+
+
+  function handleClick(e) {
+
+      e.preventDefault(); // Prevent the default button behavior
+
+      // Regular expression pattern for email validation
+
+      let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      let email = user.email
+
+
+      // Regular expression pattern for phone validation
+
+      let phonePattern = /^\d{8}$/;
+
+      let phone = user.phone
+
+      // Regular expression pattern for zip code validation
+
+      let zipCodeNumber = parseInt(user.zipCode, 10);
+
+
+
+    
+    if(!emailPattern.test(email)){
+      alert(user.email + " is an invalid email");
+      return;
+    } else if(!phonePattern.test(phone)){
+      alert(user.phone + " is an invalid danish phone number");
+      return;
+    } else if(isNaN(zipCodeNumber) || zipCodeNumber < 1000 || zipCodeNumber > 9990){
+      alert(user.zipCode + " is an invalid danish zip code");
+      return;
+    }
+    else{
+      router.push("/buyingStage/review")
+    }
+  }
+  
+  function validatePhoneNumber(phoneNumber) {
+    // Regular expression pattern for phone number validation with 8 digits
+    let phonePattern = /^\d{8}$/;
+  
+    return phonePattern.test(phoneNumber);
+  }
+
+
+
+
 
   return (
     <BuyFlowLayout>
@@ -90,7 +126,7 @@ function checkout() {
             <form className={law.form}>
               <div className={law.inputContainer}>
                 <div className={law.nameContainer}>
-                  <label className={law.fullNameLabel}>Full name</label>
+                  <label className={law.fullNameLabel}>Full name*</label>
                   <input
                     type="text"
                     name="name"
@@ -103,7 +139,7 @@ function checkout() {
                 </div>
 
                 <div className={law.streetContainer}>
-                  <label className={law.streetLabel}>Street & Number</label>
+                  <label className={law.streetLabel}>Street & Number*</label>
                   <input
                     type="text"
                     name="address"
@@ -117,7 +153,7 @@ function checkout() {
 
                 <div className={law.zipCityCountryContainer}>
                   <div className={law.zipContainer}>
-                    <label className={law.zipLabel}>Zip code</label>
+                    <label className={law.zipLabel}>Zip code*</label>
                     <input
                       type="number"
                       name="zipCode"
@@ -130,7 +166,7 @@ function checkout() {
                   </div>
 
                   <div className={law.cityContainer}>
-                    <label className={law.cityLabel}>City</label>
+                    <label className={law.cityLabel}>City*</label>
                     <input
                       type="text"
                       name="city"
@@ -143,7 +179,7 @@ function checkout() {
                   </div>
 
                   <div className={law.countryContainer}>
-                    <label className={law.countryLabel}>Country</label>
+                    <label className={law.countryLabel}>Country*</label>
                     <input
                       type="text"
                       name="country"
@@ -158,7 +194,7 @@ function checkout() {
 
                 <div className={law.emailPhoneContainer}>
                   <div className={law.emailContainer}>
-                    <label className={law.emailLabel}>Email</label>
+                    <label className={law.emailLabel}>Email*</label>
                     <input
                       type="text"
                       name="email"
@@ -171,7 +207,7 @@ function checkout() {
                   </div>
 
                   <div className={law.phoneContainer}>
-                    <label className={law.phoneLabel}>Phone Number</label>
+                    <label className={law.phoneLabel}>Phone Number*</label>
                     <input
                       type="number"
                       name="phone"
@@ -184,6 +220,7 @@ function checkout() {
                   </div>
                 </div>
               </div>
+              <span className={law.requiredSpan}>*required</span>
             </form>
           </div>
 
@@ -273,38 +310,7 @@ function checkout() {
         </div>
       </div>
 
-      {/*   
-       
-        <Collapsible title="HOME" typeOfDelivery="home"> */}
-
-      {/*   </Collapsible> 
-
-        <Collapsible title="ONLINE" typeOfDelivery="online"> 
-
-        <form className={law.sendTicketsOnline}>
-              
-              <div className={law.sendTicketsOnlineFullName}>
-
-                <label>Full Name</label>
-                <input
-                placeholder='Fiona Charming'
-                />
-
-              </div>
-
-              <div className={law.sendTicketsOnlineEmail}>
-
-                <label>Email</label>
-                <input
-                placeholder='fiona@charming'
-                />
-
-              </div>
-
-          </form>
-
-
-      </Collapsible> */}
+     
 
       <div className={law.flowNav}>
         <div className={law.backNextButtons}>
@@ -312,9 +318,12 @@ function checkout() {
             <button className={law.backButton}>GO BACK</button>
           </Link>
 
-          <Link href="/buyingStage/review">
+          <Link href="/buyingStage/review"
+          
+          >
             <button
               className={law.nextButton}
+              onClick={handleClick}
               disabled={
                 user.name == "" ||
                 user.address == "" ||
@@ -322,7 +331,8 @@ function checkout() {
                 user.city == "" ||
                 user.country == "" ||
                 user.email == "" ||
-                user.phone == ""
+                user.phone == "" 
+
                   ? true
                   : false
               }
