@@ -273,7 +273,7 @@ function svartheim() {
         </div>
 
         <div className={law.basketContainer}>
-          <h3 className={law.orderTitle}>Order Summary | {globalMoneyContext.howManyTickets === 0 ? "" : <Timer />}</h3>
+          <h3 className={law.orderTitle}>Order Summary</h3>
           <div className={law.ticketsContainer}>
             <span>Ticket(s)</span>
             <span className={law.ticketNum}>{ticketCost} kr.</span>
