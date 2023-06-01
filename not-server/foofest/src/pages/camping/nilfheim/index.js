@@ -137,6 +137,8 @@ function nilfheim() {
   function checkAvailability(event) {
     globalMoneyContext.setSelectedCamp("nilfheim");
     if (regularTickets + vipTickets > availableSpots.available) {
+      setRegularTickets(0);
+      setVipTickets(0);
       alert(
         `There are not enough tickets available. Available tickets: ${availableSpots.available} `
       );

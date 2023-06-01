@@ -12,6 +12,7 @@ import { DiMozilla } from "react-icons/di";
 const BottomNav = () => {
 
   const globalStuff = useContext(TicketsContext)
+  
   return (
     <div className={law.footContainer}>
       <div className={law.timer}>

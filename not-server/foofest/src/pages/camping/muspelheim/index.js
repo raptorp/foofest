@@ -140,6 +140,8 @@ function muspelheim() {
     globalMoneyContext.setSelectedCamp("muspelheim");
 
     if (regularTickets + vipTickets > availableSpots.available) {
+      setRegularTickets(0);
+      setVipTickets(0);
       alert(
         `There are not enough tickets available. Available tickets: ${availableSpots.available} `
       );

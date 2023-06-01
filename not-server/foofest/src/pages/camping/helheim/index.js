@@ -137,6 +137,8 @@ function helheim() {
     globalMoneyContext.setSelectedCamp("helheim");
 
     if (regularTickets + vipTickets > availableSpots.available) {
+      setRegularTickets(0);
+      setVipTickets(0);
       alert(
         `There are not enough tickets available. Available tickets: ${availableSpots.available} `
       );
