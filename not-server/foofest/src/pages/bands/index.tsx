@@ -79,7 +79,7 @@ function Bands() {
 
               <p className={bands.members}>
                 <span className={bands.membersTitle}>Members:</span>
-                <span className={bands.membersData}>{musician.members}</span>
+                <span className={bands.membersData}>{musician.members.join(", ")}</span>
               </p>
             </div>
           </article>
