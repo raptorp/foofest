@@ -128,7 +128,7 @@ function ticketHolderInfo() {
       <section className={law.details}></section>
       <div className={law.flowNav}>
         <div className={law.backNextButtons}>
-          <Link href="buyingStage/campingAddOns">
+          <Link href="/buyingStage/campingAddOns">
             <button className={law.backButton}>GO BACK</button>
           </Link>
 
