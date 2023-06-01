@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from "./Timer.module.css"
 
 function Timer() {
-  const [seconds, setSeconds] = useState(10 * 60); // 5 minutes in seconds
+  const [seconds, setSeconds] = useState(10 * 60); // 10 minutes in seconds
 
   useEffect(() => {
     // Decrease the timer every second
