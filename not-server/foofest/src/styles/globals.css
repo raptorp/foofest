@@ -94,7 +94,8 @@ body {
 
 body {
   font-family: "Source Sans Pro", sans-serif;
-  color: rgb(var(--foreground-rgb));
+  color: rgb(var(--foreground-rgb)); 
+
   background: linear-gradient(
       to bottom,
       transparent,
@@ -113,3 +114,5 @@ a {
     color-scheme: dark;
   }
 }
+
+

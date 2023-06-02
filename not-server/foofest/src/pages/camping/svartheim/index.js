@@ -3,11 +3,14 @@ import { useEffect, useState, useContext } from "react";
 
 import law from "../camping.module.css";
 
+import Timer from "../../../components/Timer/Timer"
+
 import ThirdTitle from "../../../components/ThirdTitle/ThirdTitle";
 
 import Link from "next/link";
 import TicketsContext from "../../../context/ticketsContext";
 import Image from "next/image";
+
 
 import svartheimImg from "../../../public/imgs/campImgs/svartheim.jpg";
 
@@ -35,6 +38,19 @@ import {
 import BuyFlowLayout from "../../../components/BuyFlowLayout/BuyFlowLayout";
 
 function svartheim() {
+
+
+
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+
   // bring context to this page
 
   const globalMoneyContext = useContext(TicketsContext);
@@ -132,12 +148,16 @@ function svartheim() {
 
   // CHECK IF AMOUNT OF TICKETS IS BIGGER THAN TICKETS AVAILABLE
 
-  function checkAvailability() {
+  function checkAvailability(event) {
     globalMoneyContext.setSelectedCamp("svartheim");
     if (regularTickets + vipTickets > availableSpots.available) {
-      console.log(
+      setRegularTickets(0);
+      setVipTickets(0);
+      
+      alert(
         `There are not enough tickets available. Available tickets: ${availableSpots.available} `
       );
+      event.preventDefault();
     } else {
       // GET RESERVATION ID FROM ENDPOINT "/reserve-spot" WITH A PUT REQUEST
 

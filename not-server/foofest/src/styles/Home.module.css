@@ -27,6 +27,17 @@ section.heroSection h1 {
   /* text-transform: uppercase; */
 }
 
+/* WHITE COLOR WITH LIGHT MODE */
+
+@media (prefers-color-scheme: light) {
+  section.heroSection h1 {
+
+    color: white;
+
+  }
+
+}
+
 section.heroSection h1 em {
   font-weight: 400;
   color: var(--shrek);

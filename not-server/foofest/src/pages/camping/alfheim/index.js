@@ -138,6 +138,8 @@ function alfheim() {
     globalMoneyContext.setSelectedCamp("alfheim");
 
     if (regularTickets + vipTickets > availableSpots.available) {
+      setRegularTickets(0);
+      setVipTickets(0);
       alert(
         `There are not enough tickets available. Available tickets: ${availableSpots.available} `
       );

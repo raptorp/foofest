@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import law from "./BottomNav.module.css";
+
+import Timer from "../Timer/Timer"
+import TicketsContext from "../../context/ticketsContext";
 
 import { FaFacebookF, FaSpotify, FaTiktok } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
 import { DiMozilla } from "react-icons/di";
 
 const BottomNav = () => {
+
+  const globalStuff = useContext(TicketsContext)
+  
   return (
     <div className={law.footContainer}>
+      <div className={law.timer}>
+        {globalStuff.howManyTickets === 0 ? "" : <Timer />}
+        </div>
       <div className={law.bottomNav}>
+        
+      
         <div className={law.logoAndSoMe}>
+        
           <h1 className={law.logoTxt}>SwampFest</h1>
         </div>
 
@@ -47,7 +59,7 @@ const BottomNav = () => {
           </a>
         </div>
         <div className={law.sponsorsContainer}>
-          <p>SwampFest is sponsoret by</p>
+          <p>SwampFest is sponsored by</p>
           <DiMozilla size={60} />
           <DiMozilla size={60} />
           <DiMozilla size={60} />

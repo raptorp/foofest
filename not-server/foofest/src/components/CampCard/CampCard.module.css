@@ -16,6 +16,17 @@
   height: 440px;
 }
 
+/* WHITE COLOR WITH LIGHT MODE */
+
+@media (prefers-color-scheme: light) {
+  .card {
+
+    border: 1px solid #000000;
+
+  }
+
+}
+
 .campDetails {
   display: flex;
   flex-direction: column;

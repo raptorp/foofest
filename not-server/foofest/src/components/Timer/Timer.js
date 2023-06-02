@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import styles from "./Timer.module.css"
 
 function Timer() {
-  const [seconds, setSeconds] = useState(5 * 60); // 5 minutes in seconds
+  const [seconds, setSeconds] = useState(10 * 60); // 10 minutes in seconds
 
   useEffect(() => {
     // Decrease the timer every second
@@ -18,7 +19,7 @@ function Timer() {
   const remainingSeconds = seconds % 60;
 
   return (
-    <div>
+    <div className={styles.timer}>
       {minutes}:{remainingSeconds < 10 ? '0' : ''}
       {remainingSeconds}
     </div>

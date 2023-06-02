@@ -9,3 +9,13 @@
   font-style: normal;
   color: white;
 }
+
+/* WHITE COLOR WITH LIGHT MODE */
+
+@media (prefers-color-scheme: light) {
+  .thirdTitle{
+    color: #000000;
+
+  }
+
+}

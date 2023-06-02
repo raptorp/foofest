@@ -35,6 +35,9 @@ export default function App({ Component, pageProps }) {
   // Save reservation ID globally
   const [globalReservationId, setGlobalReservationId] = useState(null)
 
+  // store timer
+  const [globalTimer, setGlobalTimer] = useState(null);
+
   return (
     <>
       <TicketsContext.Provider

@@ -1,6 +1,7 @@
 .sauronSection {
   width: 100%;
 }
+  
 
 /* NAV */
 
@@ -11,6 +12,16 @@
   font-weight: 500;
   font-style: normal;
   color: white;
+}
+
+/* MAKE TEXT DARK IF LIGHT MODE IS ON */
+
+@media (prefers-color-scheme: light) {
+  .sceneTitle {
+
+    color: #000000;
+  }
+
 }
 
 .nav {
@@ -123,6 +134,17 @@
   overflow: auto;
 }
 
+/* MAKE TEXT DARK IF LIGHT MODE IS ON */
+
+@media (prefers-color-scheme: light) {
+  .midgardActRow,
+  .vanaheimActRow,
+  .jotunheimActRow {
+    color: #000000;
+
+  }
+}
+
 .midgardAct,
 .vanaheimAct,
 .jotunheimAct {
@@ -137,6 +159,18 @@
   text-align: center;
   width: 10rem;
   transition: all 0.5s ease-in;
+}
+
+/* MAKE TEXT DARK IF LIGHT MODE IS ON */
+
+
+@media (prefers-color-scheme: light) {
+  .midgardAct,
+.vanaheimAct,
+.jotunheimAct {
+  border-right: 1px solid #000000;
+  color: #000000;
+}
 }
 
 .actName {

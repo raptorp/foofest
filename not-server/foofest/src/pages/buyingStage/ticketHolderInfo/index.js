@@ -39,12 +39,10 @@ function ticketHolderInfo() {
 
   function retrieveHolderInfoName(num, name) {
     setFormName([...formName, { Person: num, name: name }]);
-    console.log(formName);
   }
 
   function retrieveHolderInfoEmail(num, email) {
     setFormEmail([...formEmail, { Person: num, email: email }]);
-    console.log(formEmail);
   }
 
   useEffect(() => {
@@ -68,7 +66,7 @@ function ticketHolderInfo() {
           </div>
 
           <div className={law.addContainer}>
-            {/* <div className={law.selectTickets}> */}
+
             {cardStorage.map((el) => {
               return (
                 <div
@@ -128,7 +126,7 @@ function ticketHolderInfo() {
       <section className={law.details}></section>
       <div className={law.flowNav}>
         <div className={law.backNextButtons}>
-          <Link href="buyingStage/campingAddOns">
+          <Link href="/buyingStage/campingAddOns">
             <button className={law.backButton}>GO BACK</button>
           </Link>
 
